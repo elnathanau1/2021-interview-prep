@@ -22,3 +22,24 @@ class Solution {
         return root;
     }
 }
+
+// Iterative Solution
+class Solution {
+    public TreeNode lowestCommonAncestor(TreeNode root, TreeNode p, TreeNode q) {
+        Queue<TreeNode> queue = new LinkedList();
+        queue.add(root);
+        while (!queue.isEmpty()) {
+            TreeNode curr = queue.poll();
+            if (curr.val < p.val && curr.val < q.val) {
+                queue.add(curr.right);
+            }
+            else if (curr.val > p.val && curr.val > q.val) {
+                queue.add(curr.left);
+            }
+            else {
+                return curr;
+            }
+        }
+        return root;
+    }
+}
