@@ -51,3 +51,57 @@ class Solution {
         
     }
 }
+
+// Sorted Arrays solution
+class Solution {
+    public int[] intersect(int[] nums1, int[] nums2) {
+        Arrays.sort(nums1);
+        Arrays.sort(nums2);
+        
+        // use two indices to trace through arrays
+        int nums1Index = 0;
+        int nums2Index = 0;
+        
+        List<Integer> result = new ArrayList();
+        while (nums1Index <= nums1.length - 1 || nums2Index <= nums2.length - 1) {
+            int num1Val = nums1[nums1Index];
+            int num2Val = nums2[nums2Index];
+            
+            // if found match, add to result
+            if (num1Val == num2Val) {
+                result.add(num1Val);
+                // increment num1Index/num2Index if possible. If at the end, won't have any matches left anyways so break
+                if (nums1Index < nums1.length - 1) {
+                    nums1Index++;
+                }
+                else {
+                    break;
+                }
+                if (nums2Index < nums2.length - 1) {
+                    nums2Index++;
+                }
+                else {
+                    break;
+                }
+            }
+            if (num1Val < num2Val) {
+                if (nums1Index < nums1.length - 1) {
+                    nums1Index++;
+                }
+                else {
+                    break;
+                }
+            }
+            if (num1Val > num2Val) {
+                if (nums2Index < nums2.length - 1) {
+                    nums2Index++;
+                }
+                else {
+                    break;
+                }
+            }
+        }
+        
+        return result.stream().mapToInt(x -> x).toArray();
+    }
+}
