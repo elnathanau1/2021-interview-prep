@@ -2,16 +2,24 @@
 
 # Step by Step Guide:
 
-## 1: Requirements clarifications
+## 1: Requirements clarifications (~5-7 min)
 ### Functional Requirements
 Ask questions about scope 
 	- Clarify which parts of system we will be focusing on
 	- Don't just assume whatever the interviewer said is all you need to know
+```
+- Users
+- Use Case
+- Features
+- Edge cases
+- *>>> Error case <<<
+- Security
+```
 #### Example Q's:
 - Should we handle **user auth**, **security**, or **session management**?
 - Do we need to consider **logging/metrics**?
 
-## 2: Back of envelope estimation
+## 2: Back of envelope estimation 
 Things to calculate:
 
 - Network bandwidth
@@ -31,7 +39,7 @@ Estimate scale of the system.
 	- read heavy - leverage duplicating nodes (** data replication**)
 	- write heavy - split up data across different **shards**
 
-## 3: System interface definition
+## 3: System interface definition (~10 min)
 Time to define API's expected from system. List down each endpoint that you might need
 #### Example:
 ```
@@ -130,5 +138,26 @@ Also called **Brewer's theorem** - it is **impossible** to simultaneously provid
 2. ** Availability**: Every request receives a (non-error) response, w/o guarantee that it contains the most recent write
 3. **Partition tolerance**: The system continues to operate despite an arbitrary num. of messages being dropped (or delayed) by the network between nodes
 
+## Caching
+Uses for a cache:
+1. Save network calls
+2. Avoid repeated computations
+3. Reduce DB load
+
+- Policy: When do I add to cache, and when do I evict?
+	- LRU - least recently used
+	- 
+
 # Sample Mock Interviews
+## Chat Messaging System:
+### Possible Features:
+1. Group Messaging
+2. Read Receipts
+3. Online/Last seen
+4. Image Sharing
+5. Chats temporary/permanent
+
+#### One to one chat:
+
+
 ## Reddit Homepage Feed
